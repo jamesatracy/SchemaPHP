@@ -3,6 +3,32 @@ SchemaPHP
 
 SchemaPHP provides a foundation for validating data against a model or database schema. Schema's can be loaded externally or generated from a MySQL table schema.
 
+SchemaPHP currently supports the following attributes:
+
+* 'primary' - True if the field is the primary key
+
+* 'default' - The default value of the field
+
+* 'unsigned' - True if unsigned, for integers
+
+* 'size' - For integers, can be: int, tinyint, smallint, mediumint, or bigint. For floats it is the max size of the float.
+
+* 'length' - For strings, the max length
+
+* 'acceptsNull' - True if the field can be set to NULL
+
+SchemaPHP currently supports the following MySQL data types:
+
+* INT, TINYINT, SMALLINT, MEDIUMINT, BIGINT ('integer')
+
+* FLOAT, DOUBLE ('float')
+
+* VARCHAR, TEXT, LONGTEXT ('string')
+
+* CHAR ('char')
+
+* DATETIME, TIMESTAMP ('datetime', 'timestamp') Supports CURRENT_TIMESTAMP as a default value.
+
 A schema is initialized on a table:
 
 	$schema = new Schema($mysql_connection);
@@ -22,7 +48,7 @@ Get an associated array of all the schema's fields initialized to their default 
 	
 Validate one or more field values against the schema (checking type, length, etc):
 
-	$values = array("field1" => 1, "field2" => 2, ...);
+	$values = array("field1" => 1, "field2" => 2.05, "field3" => "abcdef", ...);
 	$result = $schema->validate($values);
 
 Export the schema as a JSON encoded string:
