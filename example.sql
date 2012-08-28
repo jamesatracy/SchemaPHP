@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 25, 2012 at 10:43 PM
+-- Generation Time: Aug 28, 2012 at 10:12 PM
 -- Server version: 5.1.36
 -- PHP Version: 5.3.0
 
@@ -33,6 +33,17 @@ CREATE TABLE IF NOT EXISTS `example` (
   `char_length1_default` char(1) NOT NULL DEFAULT 'A',
   `char_length5_no_default` char(5) NOT NULL,
   `char_length5_default` char(5) NOT NULL DEFAULT 'abcde',
+  `varchar_length20_no_default` varchar(20) NOT NULL,
+  `varchar_length20_default` varchar(20) NOT NULL DEFAULT 'one two three',
+  `text_no_default` text NOT NULL,
+  `longtext_no_default` longtext NOT NULL,
+  `float_no_default` float NOT NULL,
+  `float_default` float NOT NULL DEFAULT '5',
+  `double_no_default` double NOT NULL,
+  `double_default` double NOT NULL DEFAULT '5',
+  `datetime_no_default` datetime NOT NULL,
+  `datetime_default` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `timestamp_default` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

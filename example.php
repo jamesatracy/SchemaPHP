@@ -77,3 +77,40 @@ assertTest($data['char_length5_no_default']['default'] == "", "char_length5_no_d
 assertTest($data['char_length5_default']['type'] == "char", "char_length5_default is a char");
 assertTest($data['char_length5_default']['length'] == "5", "char_length5_default length is 5");
 assertTest($data['char_length5_default']['default'] == "abcde", "char_length5_default has default 'abcde'");
+
+assertTest($data['varchar_length20_no_default']['type'] == "string", "varchar_length20_no_default is a string");
+assertTest($data['varchar_length20_no_default']['length'] == "20", "varchar_length20_no_default length is 20");
+assertTest($data['varchar_length20_no_default']['default'] == "", "varchar_length20_no_default has no default");
+
+assertTest($data['varchar_length20_default']['type'] == "string", "varchar_length20_default is a string");
+assertTest($data['varchar_length20_default']['length'] == "20", "varchar_length20_default length is 20");
+assertTest($data['varchar_length20_default']['default'] == "one two three", "varchar_length20_default has default 'one two three'");
+
+assertTest($data['text_no_default']['type'] == "string", "text_no_default is a string");
+assertTest($data['text_no_default']['length'] == "", "text_no_default length is not defined");
+assertTest($data['text_no_default']['default'] == "", "text_no_default has no default");
+
+assertTest($data['longtext_no_default']['type'] == "string", "longtext_no_default is a string");
+assertTest($data['longtext_no_default']['length'] == "", "longtext_no_default length is not defined");
+assertTest($data['longtext_no_default']['default'] == "", "longtext_no_default has no default");
+
+assertTest($data['float_no_default']['type'] == "float", "float_no_default is a float");
+assertTest($data['float_no_default']['default'] == "", "float_no_default has no default");
+
+assertTest($data['float_default']['type'] == "float", "float_default is a float");
+assertTest($data['float_default']['default'] == "5.0", "float_default has default '5.0'");
+
+assertTest($data['double_no_default']['type'] == "float", "double_no_default is a float");
+assertTest($data['double_no_default']['default'] == "", "double_no_default has no default");
+
+assertTest($data['double_default']['type'] == "float", "double_default is a float");
+assertTest($data['double_default']['default'] == "5.0", "double_default has default '5.0'");
+
+assertTest($data['datetime_no_default']['type'] == "datetime", "datetime_no_default is a datetime");
+assertTest($data['datetime_no_default']['default'] == "", "datetime_no_default has no default");
+
+assertTest($data['datetime_default']['type'] == "datetime", "datetime_default is a datetime");
+assertTest($data['datetime_default']['default'] == "0000-00-00 00:00:00", "datetime_default has default '0000-00-00 00:00:00'");
+
+assertTest($data['timestamp_default']['type'] == "timestamp", "timestamp_default is a timestamp");
+assertTest($data['timestamp_default']['default'] == "CURRENT_TIMESTAMP", "timestamp_default has default 'CURRENT_TIMESTAMP'");
