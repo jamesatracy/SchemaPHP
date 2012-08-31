@@ -279,7 +279,7 @@ class Schema
 			if(!is_int($value) && !is_numeric($value))
 			{
 				// not a number
-				$this->_errors[] = "Type mismatch `".$name."`: Expected integer and found ".$this->exportVar($value);
+				$this->_errors[] = "Type mismatch `".$name."`: Expected integer and found ".Schema::exportVar($value);
 				return;
 			}
 			$int_value = intval($value);
@@ -288,7 +288,7 @@ class Schema
 				if(($field['unsigned'] && ($int_value < 0 || $int_value > 255)) || (!$field['unsigned'] && ($int_value < -128 || $int_value > 127)))
 				{
 					// out of bounds
-					$this->_errors[] = "Out of bounds error `".$name."`: Expected tinyint ".($field['unsigned'] ? "unsigned " : "")."and found ".$this->exportVar($value);
+					$this->_errors[] = "Out of bounds error `".$name."`: Expected tinyint ".($field['unsigned'] ? "unsigned " : "")."and found ".Schema::exportVar($value);
 				}
 			}
 			else if($field['size'] == "smallint")
@@ -297,7 +297,7 @@ class Schema
 				if(($field['unsigned'] && ($int_value < 0 || $int_value > 65535)) || (!$field['unsigned'] && ($int_value < -32768 || $int_value > 32767)))
 				{
 					// out of bounds
-					$this->_errors[] = "Out of bounds error `".$name."`: Expected smallint ".($field['unsigned'] ? "unsigned " : "")."and found ".$this->exportVar($value);
+					$this->_errors[] = "Out of bounds error `".$name."`: Expected smallint ".($field['unsigned'] ? "unsigned " : "")."and found ".Schema::exportVar($value);
 				}
 			}
 			else if($field['size'] == "mediumint")
@@ -306,7 +306,7 @@ class Schema
 				if(($field['unsigned'] && ($int_value < 0 || $int_value > 16777215)) || (!$field['unsigned'] && ($int_value < -8388608 || $int_value > 8388607)))
 				{
 					// out of bounds
-					$this->_errors[] = "Out of bounds error `".$name."`: Expected mediumint ".($field['unsigned'] ? "unsigned " : "")."and found ".$this->exportVar($value);
+					$this->_errors[] = "Out of bounds error `".$name."`: Expected mediumint ".($field['unsigned'] ? "unsigned " : "")."and found ".Schema::exportVar($value);
 				}
 			}
 			else if($field['size'] == "int")
@@ -315,7 +315,7 @@ class Schema
 				if(($field['unsigned'] && ($int_value < 0 || $int_value > 4294967295)) || (!$field['unsigned'] && ($int_value < -2147483648 || $int_value > 2147483647)))
 				{
 					// out of bounds
-					$this->_errors[] = "Out of bounds error `".$name."`: Expected int ".($field['unsigned'] ? "unsigned " : "")."and found ".$this->exportVar($value);
+					$this->_errors[] = "Out of bounds error `".$name."`: Expected int ".($field['unsigned'] ? "unsigned " : "")."and found ".Schema::exportVar($value);
 				}
 			}
 			else if($field['size'] == "bigint")
@@ -324,7 +324,7 @@ class Schema
 				if(($field['unsigned'] && ($int_value < 0 || $int_value > 18446744073709551615)) || (!$field['unsigned'] && ($int_value < -9223372036854775808 || $int_value > 9223372036854775807)))
 				{
 					// out of bounds
-					$this->_errors[] = "Out of bounds error `".$name."`: Expected bigint ".($field['unsigned'] ? "unsigned " : "")."and found ".$this->exportVar($value);
+					$this->_errors[] = "Out of bounds error `".$name."`: Expected bigint ".($field['unsigned'] ? "unsigned " : "")."and found ".Schema::exportVar($value);
 				}
 			}
 		}
@@ -333,7 +333,7 @@ class Schema
 			if(!is_float($value) && !is_numeric($value))
 			{
 				// not a float
-				$this->_errors[] = "Type mismatch `".$name."`: Expected float and found ".$this->exportVar($value);
+				$this->_errors[] = "Type mismatch `".$name."`: Expected float and found ".Schema::exportVar($value);
 				return;
 			}
 		}
@@ -345,7 +345,7 @@ class Schema
 				if($length > $field['length'])
 				{
 					// string exceeds maximum character length
-					$this->_errors[] = "String length (".$field['length'].") exceeded for `".$name."`: ".$this->exportVar($value)." (".$length.")";
+					$this->_errors[] = "String length (".$field['length'].") exceeded for `".$name."`: ".Schema::exportVar($value)." (".$length.")";
 				}
 			}
 		}
@@ -355,12 +355,12 @@ class Schema
 			if($length > 255)
 			{
 				// string exceeds maximum character length
-				$this->_errors[] = "Char length (".$field['length'].") exceeded for `".$name."`: ".$this->exportVar($value)." (".$length.")";
+				$this->_errors[] = "Char length (".$field['length'].") exceeded for `".$name."`: ".Schema::exportVar($value)." (".$length.")";
 			}
 			else if($length > $field['length'])
 			{
 				// string exceeds maximum character length
-				$this->_errors[] = "Char length (".$field['length'].") exceeded for `".$name."`: ".$this->exportVar($value)." (".$length.")";
+				$this->_errors[] = "Char length (".$field['length'].") exceeded for `".$name."`: ".Schema::exportVar($value)." (".$length.")";
 			}
 		}
 		else if($type == "datetime")
@@ -371,7 +371,7 @@ class Schema
 					if($value != "0000-00-00 00:00:00")
 					{
 						// invalid datetime
-						$this->_errors[] = "Invalid datetime `".$name."`: ".$this->exportVar($value);
+						$this->_errors[] = "Invalid datetime `".$name."`: ".Schema::exportVar($value);
 					}
 				}
 				else
@@ -385,7 +385,7 @@ class Schema
 			else
 			{
 				// invalid datetime
-				$this->_errors[] = "Expecting datetime `".$name."`: ".$this->exportVar($value);
+				$this->_errors[] = "Expecting datetime `".$name."`: ".Schema::exportVar($value);
 			}
 		}
 		else if($type == "timestamp")
@@ -396,7 +396,7 @@ class Schema
 					// invalid timestamp
 					if($value != "0000-00-00 00:00:00")
 					{
-						$this->_errors[] = "Invalid timestamp `".$name."`: ".$this->exportVar($value);
+						$this->_errors[] = "Invalid timestamp `".$name."`: ".Schema::exportVar($value);
 					}
 				}
 				else
@@ -410,7 +410,7 @@ class Schema
 			else
 			{
 				// invalid timestamp
-				$this->_errors[] = "Expecting timestamp `".$name."`: ".$this->exportVar($value);
+				$this->_errors[] = "Expecting timestamp `".$name."`: ".Schema::exportVar($value);
 			}
 		}
 	}

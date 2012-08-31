@@ -27,8 +27,6 @@ Built-in rules include:
 "binary" => true: value is either 0 or 1
 */
 
-Backbone::uses("DataType");
-
 class SchemaRules
 {
 	/* An array of rules and function callbacks to invoke for that rule */
@@ -111,7 +109,7 @@ class SchemaRules
 		{
 			if(!is_numeric($value))
 			{
-				self::$last_error = "Invalid `".$name."`: ".DataType::export($value)." is not numeric";
+				self::$last_error = "Invalid `".$name."`: ".Schema::exportVar($value)." is not numeric";
 				return false;
 			}
 		}
@@ -133,7 +131,7 @@ class SchemaRules
 		{
 			if(!filter_var($value, FILTER_VALIDATE_EMAIL))
 			{
-				self::$last_error = "Invalid email address `".$name."`: ".DataType::export($value);
+				self::$last_error = "Invalid email address `".$name."`: ".Schema::exportVar($value);
 				return false;
 			}
 		}
@@ -155,7 +153,7 @@ class SchemaRules
 		{
 			if(!filter_var($value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED))
 			{
-				self::$last_error = "Invalid url `".$name."`: ".DataType::export($value);
+				self::$last_error = "Invalid url `".$name."`: ".Schema::exportVar($value);
 				return false;
 			}
 		}
@@ -177,7 +175,7 @@ class SchemaRules
 		{
 			if(intval($value) < $args)
 			{
-				self::$last_error = "Out of bounds error `".$name."`: ".DataType::export($value)." is less than ".$args;
+				self::$last_error = "Out of bounds error `".$name."`: ".Schema::exportVar($value)." is less than ".$args;
 				return false;
 			}
 		}
@@ -199,7 +197,7 @@ class SchemaRules
 		{
 			if(intval($value) > $args)
 			{
-				self::$last_error = "Out of bounds error `".$name."`: ".DataType::export($value)." is greater than ".$args;
+				self::$last_error = "Out of bounds error `".$name."`: ".Schema::exportVar($value)." is greater than ".$args;
 				return false;
 			}
 		}
@@ -221,7 +219,7 @@ class SchemaRules
 		{
 			if(strlen($value) < $args)
 			{
-				self::$last_error = "String length error `".$name."`: ".DataType::export($value)." is less than ".$args;
+				self::$last_error = "String length error `".$name."`: ".Schema::exportVar($value)." is less than ".$args;
 				return false;
 			}
 		}
@@ -243,7 +241,7 @@ class SchemaRules
 		{
 			if(strlen($value) > $args)
 			{
-				self::$last_error = "String length error `".$name."`: ".DataType::export($value)." is greater than ".$args;
+				self::$last_error = "String length error `".$name."`: ".Schema::exportVar($value)." is greater than ".$args;
 				return false;
 			}
 		}
@@ -265,7 +263,7 @@ class SchemaRules
 		{
 			if(!in_array($value, $args))
 			{
-				self::$last_error = "Error `".$name."`: ".DataType::export($value)." must be one of [".join(", ", $args)."]";
+				self::$last_error = "Error `".$name."`: ".Schema::exportVar($value)." must be one of [".join(", ", $args)."]";
 				return false;
 			}
 		}
