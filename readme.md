@@ -1,30 +1,7 @@
 SchemaPHP
 =========
 
-SchemaPHP provides a foundation for validating data against a model or database schema. Schema's can be loaded externally or generated from a MySQL table schema. You can also add additional validation rules to any field in the schema as defined in SchemaRules or add your own custom rules. Built-in rules include:
-
-* "required" => true: field is required (cannot be empty)
-
-* "numeric" => true: field must be numeric (0-9 chars only)
-
-* "email" => true: validate email address
-
-* "url" => true: validate url (with path)
-
-* "min" => value: require a minium value for a field
-
-* "max" => value: require a maximum value for a field
-
-* "minlength" => value: require a minimum length for a (string)
-
-* "maxlength" => value: require a maximum length for a (string)
-
-* "enum" => array(): value must in the given array
-
-* "binary" => true: value is either 0 or 1
-
-
-SchemaPHP currently supports the following attributes:
+SchemaPHP provides a foundation for validating data against a model or database schema. Schema's can be loaded externally or generated from a MySQL table schema. SchemaPHP currently supports the following attributes:
 
 * 'primary' - True if the field is the primary key
 
@@ -49,6 +26,28 @@ SchemaPHP currently supports the following MySQL data types:
 * CHAR ('char')
 
 * DATETIME, TIMESTAMP ('datetime', 'timestamp') Supports CURRENT_TIMESTAMP as a default value.
+
+You can also add additional validation rules to any field in the schema as defined in SchemaRules or add your own custom rules. Built-in rules include:
+
+* "required" => true: field is required (cannot be empty)
+
+* "numeric" => true: field must be numeric (0-9 chars only)
+
+* "email" => true: validate email address
+
+* "url" => true: validate url (with path)
+
+* "min" => value: require a minium value for a field
+
+* "max" => value: require a maximum value for a field
+
+* "minlength" => value: require a minimum length for a (string)
+
+* "maxlength" => value: require a maximum length for a (string)
+
+* "enum" => array(): value must in the given array
+
+* "binary" => true: value is either 0 or 1
 
 A schema is initialized on a table:
 
